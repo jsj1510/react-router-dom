@@ -42,10 +42,11 @@ function App() {
         <li><a href="/contact">contact</a></li>
       </ul>
       <Switch>
-    <Route path="/"><Home></Home></Route>
-    <Route path="/topcis"><Topics></Topics></Route>
-    <Route path="/contact"><Contact></Contact></Route>
-    </Switch>
+        <Route exact path="/"><Home></Home></Route>
+        <Route path="/topcis"><Topics></Topics></Route>
+        <Route path="/contact"><Contact></Contact></Route>
+        <Route path="/">Not found</Route>
+      </Switch>
     </div>
   )
 }
