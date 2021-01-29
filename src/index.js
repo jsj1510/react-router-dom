@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 
 
 function Home() {
@@ -37,9 +37,9 @@ function App() {
     <div> 
       <h1>hi </h1>
       <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/topcis">topic</a></li>
-        <li><a href="/contact">contact</a></li>
+        <li><Link to="/">home</Link></li>
+        <li><Link to="/topcis">topic</Link></li>
+        <li><Link to="/contact">contact</Link></li>
       </ul>
       <Switch>
         <Route exact path="/"><Home></Home></Route>
