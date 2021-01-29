@@ -44,7 +44,7 @@ function Topic() {
 function Topics() {
   const lis = [];
   for(let i =0; i<contents.length; i++) {
-    lis.push(<li><NavLink to={'/topics/'+contents[i].id}>{contents[i].title}</NavLink></li>)
+    lis.push(<li key={contents[i].id}><NavLink to={'/topics/'+contents[i].id}>{contents[i].title}</NavLink></li>)
   }
   return (
     <div>
