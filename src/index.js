@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Switch, Link, NavLink} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Link, NavLink, useParams} from "react-router-dom";
 
 
 function Home() {
@@ -19,6 +19,28 @@ const contents = [
   {id:2, title:'js', description:"js is ..."},
   {id:3, title:'react', description:"react is ..."}
 ]
+
+function Topic() {
+  const params = useParams();
+  const topic_id = params.topic_id;
+  let selected_topic = {
+    title:'sry',
+    description:'Not Found'
+  }
+  for (let i = 0; i < contents.length; i++) {
+    if(contents[i].id === Number(topic_id)) {
+      selected_topic = contents[i];
+      break;
+    }
+  }
+  return (
+    <div>
+      <h3>{selected_topic.title}</h3>
+      {selected_topic.description}
+    </div>
+  );
+}
+
 function Topics() {
   const lis = [];
   for(let i =0; i<contents.length; i++) {
@@ -30,11 +52,14 @@ function Topics() {
       <ul>
         {lis}
       </ul>
-      <Switch>
+      <Route path="/topics/:topic_id">
+        <Topic></Topic>
+      </Route>
+      {/* <Switch>
         <Route path="/topics/1">html..</Route>
         <Route path="/topics/2">js..</Route>
         <Route path="/topics/3">React..</Route>
-      </Switch>
+      </Switch> */}
     </div>
     )
 }
