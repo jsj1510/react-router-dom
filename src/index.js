@@ -14,11 +14,27 @@ function Home() {
     )
 }
 
+const contents = [
+  {id:1, title:'Html', description:"html is ..."},
+  {id:2, title:'js', description:"js is ..."},
+  {id:3, title:'react', description:"react is ..."}
+]
 function Topics() {
+  const lis = [];
+  for(let i =0; i<contents.length; i++) {
+    lis.push(<li><NavLink to={'/topics/'+contents[i].id}>{contents[i].title}</NavLink></li>)
+  }
   return (
     <div>
-    <h2>Topics</h2>
-    topcis..
+      <h2>Topics</h2>
+      <ul>
+        {lis}
+      </ul>
+      <Switch>
+        <Route path="/topics/1">html..</Route>
+        <Route path="/topics/2">js..</Route>
+        <Route path="/topics/3">React..</Route>
+      </Switch>
     </div>
     )
 }
@@ -38,14 +54,14 @@ function App() {
       <h1>hi </h1>
       <ul>
         <li><NavLink exact to="/">home</NavLink></li>
-        <li><NavLink to="/topcis">topic</NavLink></li>
+        <li><NavLink to="/topics">topic</NavLink></li>
         <li><NavLink to="/contact">contact</NavLink></li>
       </ul>
       <Switch>
         <Route exact path="/"><Home></Home></Route>
-        <Route path="/topcis"><Topics></Topics></Route>
+        <Route path="/topics"><Topics></Topics></Route>
         <Route path="/contact"><Contact></Contact></Route>
-        <Route path="/">Not found</Route>
+        <Route path="/">Not found</Route> 
       </Switch>
     </div>
   )
